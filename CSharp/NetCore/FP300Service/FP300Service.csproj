@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Assets\Images\FP300 All mini.png" />
+	  <None Remove="Assets\Images\Logo.png" />
+	  <None Remove="Assets\Images\refresh.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.IO.Ports" Version="10.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Hugin.Common">
+			<HintPath>..\etc\Hugin.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="Hugin.ExDevice.DiffieHellman">
+			<HintPath>..\etc\Hugin.ExDevice.DiffieHellman.dll</HintPath>
+		</Reference>
+		<Reference Include="Hugin.GMPCommon">
+			<HintPath>..\etc\Hugin.GMPCommon.dll</HintPath>
+		</Reference>
+		<Reference Include="Hugin.POS.CompactPrinter.FP300">
+			<HintPath>..\etc\Hugin.POS.CompactPrinter.FP300.dll</HintPath>
+		</Reference>
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>..\etc\Newtonsoft.Json.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Data.SQLite">
+			<HintPath>..\etc\System.Data.SQLite.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Assets\Images\FP300 All mini.png" />
+	  <Resource Include="Assets\Images\Logo.png" />
+	  <Resource Include="Assets\Images\refresh.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Certificates\Kurumsal-s1.crt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Certificates\OKC-S1-SIL.crl">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Certificates\OKC-S1.cer">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,131 @@
+<Window x:Class="FP300NetCoreService.Views.CustomerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CustomerForm"
+        Width="846"
+        Height="754"
+        FontFamily="Microsoft Sans Serif"
+        FontSize="16"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="4,5" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Padding" Value="12" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="#7F9DB9" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="4,2,4,2" />
+            <Setter Property="Margin" Value="4,5" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="#ACACAC" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="4,1" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#FDFDFD" Offset="0" />
+                        <GradientStop Color="#E3E3E3" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="labelCustomerTCKNVKN" Grid.Row="0" Grid.Column="0" Text="TCKN / VKN" />
+            <TextBox x:Name="textBoxCustomerTCKNVKN" Grid.Row="0" Grid.Column="1" />
+
+            <TextBlock x:Name="labelCustomerName" Grid.Row="1" Grid.Column="0" Text="NAME" />
+            <TextBox x:Name="textBoxCustomerName" Grid.Row="1" Grid.Column="1" />
+
+            <TextBlock x:Name="labelCustomerLabel" Grid.Row="2" Grid.Column="0" Text="LABEL" />
+            <TextBox x:Name="textBoxCustomerLabel" Grid.Row="2" Grid.Column="1" />
+
+            <TextBlock x:Name="labelCustomerTaxOffice" Grid.Row="3" Grid.Column="0" Text="TAX OFFICE" />
+            <TextBox x:Name="textBoxCustomerTaxOffice" Grid.Row="3" Grid.Column="1" />
+            <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="labelCustomerAddress1" Grid.Row="0" Text="ADDRESS LINE 1" />
+                <TextBlock x:Name="labelCustomerAddress2" Grid.Row="1" Text="ADDRESS LINE 2" />
+                <TextBlock x:Name="labelCustomerAddress3" Grid.Row="2" Text="ADDRESS LINE 3" />
+                <TextBlock x:Name="labelCustomerAddress4" Grid.Row="3" Text="ADDRESS LINE 4" />
+                <TextBlock x:Name="labelCustomerAddress5" Grid.Row="4" Text="ADDRESS LINE 5" />
+                <TextBox x:Name="textBoxCustomerAddress1" Grid.Row="0" Grid.Column="1" MaxLength="32" />
+                <TextBox x:Name="textBoxCustomerAddress2" Grid.Row="1" Grid.Column="1" MaxLength="32" />
+                <TextBox x:Name="textBoxCustomerAddress3" Grid.Row="2" Grid.Column="1" MaxLength="32" />
+                <TextBox x:Name="textBoxCustomerAddress4" Grid.Row="3" Grid.Column="1" MaxLength="32" />
+                <TextBox x:Name="textBoxCustomerAddress5" Grid.Row="4" Grid.Column="1" MaxLength="32" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="4,5,4,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2.5*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2.5*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="buttonAdd" Grid.Row="0" Grid.Column="1" Margin="4,5" Content="ADD" Click="ButtonAdd_OnClick" />
+            <Button x:Name="buttonClear" Grid.Row="0" Grid.Column="3" Margin="4,5" Content="CLEAR" Click="ButtonClear_OnClick" />
+        </Grid>
+    </Grid>
+</Window>

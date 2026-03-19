@@ -1,0 +1,85 @@
+<UserControl x:Class="FP300NetCoreService.Views.UtililtyFuncsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:FP300NetCoreService.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             FontFamily="Microsoft Sans Serif"
+             FontSize="12"
+             UseLayoutRounding="True"
+             SnapsToDevicePixels="True"
+             d:DesignHeight="526"
+             d:DesignWidth="886">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="BorderBrush" Value="#7F9DB9" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="2,1,2,1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="#ACACAC" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="4,1" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#FDFDFD" Offset="0" />
+                        <GradientStop Color="#E3E3E3" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Canvas Width="886" Height="526">
+        <TextBlock x:Name="lblFiscalOperations" Canvas.Left="10" Canvas.Top="20" Width="225" Height="25" FontWeight="Bold" FontSize="12" Text="FISCAL OPERATIONS" />
+        <Button x:Name="btnStartFM" Canvas.Left="10" Canvas.Top="60" Width="225" Height="30" Content="START FM" Click="BtnStartFM_OnClick" />
+
+        <TextBlock x:Name="lblStatusInfo" Canvas.Left="285" Canvas.Top="20" Width="225" Height="25" FontWeight="Bold" FontSize="12" Text="STATUS INFO" />
+        <Button x:Name="btnQueryStatus" Canvas.Left="285" Canvas.Top="60" Width="225" Height="30" Content="CHECK STATUS" Click="BtnQueryStatus_OnClick" />
+        <Button x:Name="btnLastResponse" Canvas.Left="285" Canvas.Top="100" Width="225" Height="30" Content="LAST RESPONSE" Click="BtnLastResponse_OnClick" />
+        <Button x:Name="btnInterruptProcess" Canvas.Left="285" Canvas.Top="140" Width="225" Height="30" Content="INTERRUPT PROCESS" Click="BtnInterruptProcess_OnClick" />
+
+        <TextBlock x:Name="lblNFReceipt" Canvas.Left="560" Canvas.Top="20" Width="225" Height="25" FontWeight="Bold" FontSize="12" Text="NONFISCAL RCPT." />
+        <Button x:Name="btnStartNFReceipt" Canvas.Left="560" Canvas.Top="60" Width="225" Height="30" Content="START NF RECEIPT" Click="BtnStartNFReceipt_OnClick" />
+        <Button x:Name="btnSampleNF" Canvas.Left="560" Canvas.Top="100" Width="225" Height="30" Content="PRINT SAMPLE CONTEXT" Click="BtnSampleNF_OnClick" />
+        <Button x:Name="btnCloseNF" Canvas.Left="560" Canvas.Top="140" Width="225" Height="30" Content="CLOSE NF RECEIPT" Click="BtnCloseNF_OnClick" />
+
+        <TextBlock x:Name="lblCashierOptions" Canvas.Left="10" Canvas.Top="190" Width="200" Height="25" FontWeight="Bold" FontSize="12" Text="CASHIER OPTIONS" />
+        <TextBlock x:Name="lblCashierNo" Canvas.Left="10" Canvas.Top="225" Width="111" Height="20" Text="CASHIER ID :" />
+        <controls:NumericUpDownControl x:Name="nmrCashierNo" Canvas.Left="145" Canvas.Top="225" Width="150" Height="26" DecimalPlaces="0" Increment="1" Minimum="1" Maximum="99" Value="1" />
+        <TextBlock x:Name="lblPass" Canvas.Left="365" Canvas.Top="225" Width="111" Height="20" Text="PASSWORD :" />
+        <PasswordBox x:Name="txtPassword" Canvas.Left="515" Canvas.Top="225" Width="150" Height="26" MaxLength="10" />
+        <Button x:Name="btnSignInCashier" Canvas.Left="700" Canvas.Top="225" Width="150" Height="30" Content="LOGIN" Click="BtnSignInCashier_OnClick" />
+
+        <TextBlock x:Name="lblDrawerOptions" Canvas.Left="10" Canvas.Top="270" Width="200" Height="25" FontWeight="Bold" FontSize="12" Text="DRAWER OPTIONS" />
+        <TextBlock x:Name="lblPayAmount" Canvas.Left="10" Canvas.Top="305" Width="85" Height="20" Text="AMOUNT :" />
+        <controls:NumericUpDownControl x:Name="nmrPayAmount" Canvas.Left="145" Canvas.Top="305" Width="195" Height="26" DecimalPlaces="2" Increment="1" Minimum="1" Maximum="9999999" Value="1" />
+        <Button x:Name="btnPayIn" Canvas.Left="515" Canvas.Top="305" Width="150" Height="30" Content="CASH IN" Click="BtnPayIn_OnClick" />
+        <Button x:Name="btnPayOut" Canvas.Left="700" Canvas.Top="305" Width="150" Height="30" Content="CASH OUT" Click="BtnPayOut_OnClick" />
+
+        <TextBlock x:Name="lblKeypadOptions" Canvas.Left="10" Canvas.Top="355" Width="200" Height="25" FontWeight="Bold" FontSize="12" Text="KEYPAD OPTIONS" />
+        <Button x:Name="btnLockKeys" Canvas.Left="515" Canvas.Top="385" Width="150" Height="30" Content="LOCK KEYS" Click="BtnLockKeys_OnClick" />
+        <Button x:Name="btnUnlockKeys" Canvas.Left="700" Canvas.Top="385" Width="150" Height="30" Content="UNLOCK KEYS" Click="BtnUnlockKeys_OnClick" />
+    </Canvas>
+</UserControl>

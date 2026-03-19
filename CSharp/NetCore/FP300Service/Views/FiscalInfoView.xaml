@@ -1,0 +1,83 @@
+<UserControl x:Class="FP300NetCoreService.Views.FiscalInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:FP300NetCoreService.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="66.5*" />
+            <ColumnDefinition Width="33.5*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <GroupBox x:Name="gbxStatusFuncs" Grid.Row="0" Grid.Column="0" Margin="2" Header="Mali Fiş Bilgileri">
+            <Grid Margin="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="34*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnLastZInfo" Grid.Row="0" Grid.Column="0" Margin="2" Content="Son Z Bilgisi" Click="BtnLastZInfo_OnClick" />
+                <Button x:Name="btnLastReceiptInfo" Grid.Row="0" Grid.Column="1" Margin="2" Content="Son Fiş Bilgisi" Click="BtnLastReceiptInfo_OnClick" />
+                <Button x:Name="btnDrawerInfo" Grid.Row="0" Grid.Column="2" Margin="2" Content="Çekmece Bilgileri" Click="BtnDrawerInfo_OnClick" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="gbcEjLimit" Grid.Row="1" Grid.Column="0" Margin="2" Header="EKÜ Limit">
+            <Grid Margin="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="34*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnSetEjLimit" Grid.Row="0" Grid.Column="0" Margin="2" Content="EKÜ Limit Ayarla" Click="BtnSetEjLimit_OnClick" />
+                <TextBlock x:Name="lblEjLimit" Grid.Row="0" Grid.Column="1" Margin="2,0" VerticalAlignment="Center" TextAlignment="Center" Text="Satır Sayısı:" />
+                <controls:NumericUpDownControl x:Name="nmrEjLine" Grid.Row="0" Grid.Column="2" Width="79" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center" DecimalPlaces="0" Increment="1" Minimum="0" Maximum="40000000" Value="100" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="groupBoxVersionInfo" Grid.Row="2" Grid.Column="0" Margin="2" Header="Versiyon Bilgileri">
+            <Grid Margin="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="34*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnGetEcrVersion" Grid.Row="0" Grid.Column="0" Margin="2" Content="Mali Uygulama Versiyonu" Click="BtnGetEcrVersion_OnClick" />
+                <Button x:Name="btnLibraryVersion" Grid.Row="0" Grid.Column="1" Margin="2" Content="Kütüphane Versiyonu" Click="BtnLibraryVersion_OnClick" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="groupBoxOther" Grid.Row="3" Grid.Column="0" Margin="2" Header="Diğer">
+            <Grid Margin="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="34*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnDailySummary" Grid.Row="0" Grid.Column="0" Margin="2" Content="Günlük Özet" Click="BtnDailySummary_OnClick" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

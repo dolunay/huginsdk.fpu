@@ -1,0 +1,624 @@
+<UserControl x:Class="FP300NetCoreService.Views.ProgramView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TabControl x:Name="tbcProgram">
+            <TabItem x:Name="tbpDepTax" Header="DEPARTMENT">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblDepartment" FontWeight="SemiBold" Margin="0,0,0,8" Text="DEPARTMENT DEFINITION" />
+
+                    <DataGrid x:Name="dgvDepDefine"
+                              Grid.Row="1"
+                              Margin="0,0,0,8"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column"
+                              SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="DEP. ID" Binding="{Binding DepartmentId}" Width="80" />
+                            <DataGridTextColumn Header="DEP. NAME" Binding="{Binding DepartmentName}" Width="*" />
+                            <DataGridTextColumn Header="VAT GROUP" Binding="{Binding VatGroupId}" Width="90" />
+                            <DataGridTextColumn Header="PRICE" Binding="{Binding Price}" Width="90" />
+                            <DataGridTextColumn Header="LIMIT" Binding="{Binding Limit}" Width="90" />
+                            <DataGridCheckBoxColumn Header="WEIGHABLE" Binding="{Binding Weighable}" Width="90" />
+                            <DataGridCheckBoxColumn Header="COMMIT" Binding="{Binding Commit}" Width="70" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnGetDepartment" Grid.Column="1" Content="GET DEPARTMENT" Margin="2" Click="BtnGetDepartment_OnClick" />
+                        <Button x:Name="btnSaveDepartment" Grid.Column="3" Content="SAVE DEPARTMENT" Margin="2" Click="BtnSaveDepartment_OnClick" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tbpPLU" Header="PLU">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblPLUDefine" FontWeight="SemiBold" Margin="0,0,0,8" Text="PLU DEFINITION" />
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
+                        <TextBlock x:Name="lblPLUStart" VerticalAlignment="Center" Margin="0,0,8,0" Text="PLU ID:" />
+                        <TextBox x:Name="txtPluAddress" Width="180" Text="1-20" />
+                        <TextBlock x:Name="lblInfoPLU"
+                                   Margin="12,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#00C000"
+                                   FontWeight="Bold"
+                                   Cursor="Hand"
+                                   Text="?"
+                                   MouseLeftButtonUp="LblInfoPLU_OnMouseLeftButtonUp" />
+                    </StackPanel>
+
+                    <DataGrid x:Name="dgvPLUDefine"
+                              Grid.Row="2"
+                              Margin="0,0,0,8"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column"
+                              SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="PLU ID" Binding="{Binding PluNo}" Width="80" />
+                            <DataGridTextColumn Header="PLU NAME" Binding="{Binding Name}" Width="*" />
+                            <DataGridTextColumn Header="DEP ID" Binding="{Binding Department}" Width="80" />
+                            <DataGridTextColumn Header="PRICE" Binding="{Binding Price}" Width="80" />
+                            <DataGridCheckBoxColumn Header="WEIGHABLE" Binding="{Binding Weighable}" Width="90" />
+                            <DataGridTextColumn Header="BARCODE" Binding="{Binding Barcode}" Width="120" />
+                            <DataGridTextColumn Header="SUB CAT" Binding="{Binding SubCategory}" Width="90" />
+                            <DataGridCheckBoxColumn Header="COMMIT" Binding="{Binding Commit}" Width="70" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnGetPLU" Grid.Column="1" Content="GET PLU" Margin="2" Click="BtnGetPlu_OnClick" />
+                        <Button x:Name="btnSavePLU" Grid.Column="3" Content="SAVE PLU" Margin="2" Click="BtnSavePlu_OnClick" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tbpCredit" Header="CREDIT">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Margin="0,0,8,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="lblFCurrency" Margin="0,0,0,8" FontWeight="SemiBold" Text="F.CURRENCY DEFINITION" />
+
+                        <DataGrid x:Name="dgvFCurrency"
+                                  Grid.Row="1"
+                                  Margin="0,0,0,8"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="Column">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="F.CURRENCY ID" Binding="{Binding Id}" Width="90" />
+                                <DataGridTextColumn Header="F.CURRENCY CODE" Binding="{Binding Name}" Width="*" />
+                                <DataGridTextColumn Header="EXC RATE" Binding="{Binding Rate}" Width="110" />
+                                <DataGridCheckBoxColumn Header="COMMIT" Binding="{Binding Commit}" Width="80" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnGetFCurrency" Grid.Column="1" Content="GET F.CURRENCY" Margin="2" Click="BtnGetFCurrency_OnClick" />
+                            <Button x:Name="btnSaveFcurrency" Grid.Column="3" Content="SAVE F.CURRENCY" Margin="2" Click="BtnSaveFCurrency_OnClick" />
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Margin="8,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="lblCredit" Margin="0,0,0,8" FontWeight="SemiBold" Text="CREDIT DEFINITION" />
+
+                        <DataGrid x:Name="dgvCredits"
+                                  Grid.Row="1"
+                                  Margin="0,0,0,8"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="Column">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="CREDIT ID" Binding="{Binding Id}" Width="90" />
+                                <DataGridTextColumn Header="CREDIT NAME" Binding="{Binding Name}" Width="*" />
+                                <DataGridCheckBoxColumn Header="COMMIT" Binding="{Binding Commit}" Width="80" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnGetCredits" Grid.Column="1" Content="GET CREDIT" Margin="2" Click="BtnGetCredits_OnClick" />
+                            <Button x:Name="btnSaveCredits" Grid.Column="3" Content="SAVE CREDIT" Margin="2" Click="BtnSaveCredits_OnClick" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tbpCategory" Header="CATEGORY">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblMainGrup" FontWeight="SemiBold" Margin="0,0,0,8" Text="MAIN GROUP" />
+
+                    <DataGrid x:Name="dgvMainCategory"
+                              Grid.Row="1"
+                              Margin="0,0,0,8"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="MAIN CAT. ID" Binding="{Binding Id}" Width="120" />
+                            <DataGridTextColumn Header="MAIN CAT. NAME" Binding="{Binding Name}" Width="*" />
+                            <DataGridCheckBoxColumn Header="COMMIT" Binding="{Binding Commit}" Width="90" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnGetMainCategory" Grid.Column="1" Content="GET MAIN CAT." Margin="2" Click="BtnGetMainCategory_OnClick" />
+                        <Button x:Name="btnSaveMainCategory" Grid.Column="3" Content="SAVE MAIN CAT." Margin="2" Click="BtnSaveMainCategory_OnClick" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tbpCashier" Header="CASHIER">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblCashier" FontWeight="SemiBold" Margin="0,0,0,8" Text="CASHIER LIST" />
+
+                    <DataGrid x:Name="dgvCashier"
+                              Grid.Row="1"
+                              Margin="0,0,0,8"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="CASHIER ID" Binding="{Binding Id}" Width="100" />
+                            <DataGridTextColumn Header="CASHIER NAME" Binding="{Binding Name}" Width="*" />
+                            <DataGridTextColumn Header="CASHIER PWD" Binding="{Binding Password}" Width="120" />
+                            <DataGridCheckBoxColumn Header="COMMIT" Binding="{Binding Commit}" Width="90" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnGetCashier" Grid.Column="1" Content="GET CASHIER" Margin="2" Click="BtnGetCashier_OnClick" />
+                        <Button x:Name="btnSaveCashier" Grid.Column="3" Content="SAVE CASHIER" Margin="2" Click="BtnSaveCashier_OnClick" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tbpProgramOption" Header="PROGRAM OPTIONS">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblProgramOption" FontWeight="SemiBold" Margin="0,0,0,8" Text="PROGRAM OPTIONS" />
+
+                    <DataGrid x:Name="dgvPrmOption"
+                              Grid.Row="1"
+                              Margin="0,0,0,8"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="80" />
+                            <DataGridTextColumn Header="NAME" Binding="{Binding Name}" Width="*" />
+                            <DataGridTextColumn Header="VALUE" Binding="{Binding Value}" Width="160" />
+                            <DataGridCheckBoxColumn Header="COMMIT" Binding="{Binding Commit}" Width="90" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnGetPrmOption" Grid.Column="1" Content="GET PROG. OPTIONS" Margin="2" Click="BtnGetProgramOption_OnClick" />
+                        <Button x:Name="btnSavePrmOption" Grid.Column="3" Content="SAVE PROG. OPTIONS" Margin="2" Click="BtnSaveProgramOption_OnClick" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tbpBitmapLogo" Header="GRAPHIC LOGO">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblPreviewLogo" Text="PREVIEW" Margin="0,0,0,8" />
+
+                    <Border Grid.Row="1"
+                            Width="570"
+                            Height="120"
+                            HorizontalAlignment="Left"
+                            BorderBrush="#DDD"
+                            BorderThickness="1"
+                            Background="#F7F7F7"
+                            Padding="0">
+                        <Grid>
+                            <Image x:Name="imgLogoPreview"
+                                   Stretch="None"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,8">
+                        <TextBlock x:Name="lblLogoWidth" Text="&lt;-- Genişlik 570px --&gt;" Margin="180,0,12,0" />
+                        <TextBlock x:Name="lblLogoHeight" Text="Yükseklik 120px" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,8">
+                        <Button x:Name="btnBrowseBmp" Content="BROWSE BITMAP" Width="120" Height="30" Margin="0,0,8,0" Click="BtnBrowseBitmap_OnClick" />
+                        <Button x:Name="btnSendBitmap" Content="SAVE LOGO" Width="120" Height="30" Margin="0,0,8,0" Click="BtnSendBitmap_OnClick" />
+                        <CheckBox x:Name="checkBoxForGibLogo" Content="GIB LOGO" VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <TextBlock x:Name="txtBitmapPath"
+                               Grid.Row="4"
+                               Margin="0,8,0,0"
+                               TextWrapping="Wrap"
+                               Foreground="#666" />
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tbpNetwork" Header="NETWORK SETTINGS">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="110" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="lblNetworkInfo" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Margin="0,0,0,8" VerticalAlignment="Center" Text="* Blank field for dynamic IP" />
+
+                    <TextBlock x:Name="lblTsmIp" Grid.Row="1" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="IP :" />
+                    <TextBox x:Name="txtIp" Grid.Row="1" Grid.Column="1" Margin="0,0,8,8" />
+                    <CheckBox x:Name="chkIp" Grid.Row="1" Grid.Column="2" IsChecked="True" Margin="0,0,8,8" VerticalAlignment="Center" Checked="NetworkCheckBox_OnCheckedChanged" Unchecked="NetworkCheckBox_OnCheckedChanged" />
+
+                    <TextBlock x:Name="lblSubnet" Grid.Row="2" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="Subnet :" />
+                    <TextBox x:Name="txtSubnet" Grid.Row="2" Grid.Column="1" Margin="0,0,8,8" Text="255.255.255.0" />
+                    <CheckBox x:Name="chkSubnet" Grid.Row="2" Grid.Column="2" IsChecked="True" Margin="0,0,8,8" VerticalAlignment="Center" Checked="NetworkCheckBox_OnCheckedChanged" Unchecked="NetworkCheckBox_OnCheckedChanged" />
+
+                    <TextBlock x:Name="lblGateway" Grid.Row="3" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="Gateway :" />
+                    <TextBox x:Name="txtGateway" Grid.Row="3" Grid.Column="1" Margin="0,0,8,8" />
+                    <CheckBox x:Name="chkGateway" Grid.Row="3" Grid.Column="2" IsChecked="True" Margin="0,0,8,8" VerticalAlignment="Center" Checked="NetworkCheckBox_OnCheckedChanged" Unchecked="NetworkCheckBox_OnCheckedChanged" />
+
+                    <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button x:Name="btnSaveNetwork" Content="SAVE" MinWidth="120" Click="BtnSaveNetwork_OnClick" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tabSRVLogo" Header="LOGO">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Margin="0,0,0,8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="LOGO LINE 1 :" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="txtLogo0" Grid.Row="0" Grid.Column="1" Margin="0,0,8,6" MaxLength="48" TextChanged="LogoTextBox_OnTextChanged" />
+                        <CheckBox x:Name="chkLogo0" Grid.Row="0" Grid.Column="2" Content="Seçme" IsChecked="True" VerticalAlignment="Center" Margin="0,0,0,6" Checked="LogoCheckBox_OnCheckedChanged" Unchecked="LogoCheckBox_OnCheckedChanged" />
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="LOGO LINE 2 :" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="txtLogo1" Grid.Row="1" Grid.Column="1" Margin="0,0,8,6" MaxLength="48" TextChanged="LogoTextBox_OnTextChanged" />
+                        <CheckBox x:Name="chkLogo1" Grid.Row="1" Grid.Column="2" Content="Seçme" IsChecked="True" VerticalAlignment="Center" Margin="0,0,0,6" Checked="LogoCheckBox_OnCheckedChanged" Unchecked="LogoCheckBox_OnCheckedChanged" />
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="LOGO LINE 3 :" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="txtLogo2" Grid.Row="2" Grid.Column="1" Margin="0,0,8,6" MaxLength="48" TextChanged="LogoTextBox_OnTextChanged" />
+                        <CheckBox x:Name="chkLogo2" Grid.Row="2" Grid.Column="2" Content="Seçme" IsChecked="True" VerticalAlignment="Center" Margin="0,0,0,6" Checked="LogoCheckBox_OnCheckedChanged" Unchecked="LogoCheckBox_OnCheckedChanged" />
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="LOGO LINE 4 :" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="txtLogo3" Grid.Row="3" Grid.Column="1" Margin="0,0,8,6" MaxLength="48" TextChanged="LogoTextBox_OnTextChanged" />
+                        <CheckBox x:Name="chkLogo3" Grid.Row="3" Grid.Column="2" Content="Seçme" IsChecked="True" VerticalAlignment="Center" Margin="0,0,0,6" Checked="LogoCheckBox_OnCheckedChanged" Unchecked="LogoCheckBox_OnCheckedChanged" />
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="LOGO LINE 5 :" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="txtLogo4" Grid.Row="4" Grid.Column="1" Margin="0,0,8,6" MaxLength="48" TextChanged="LogoTextBox_OnTextChanged" />
+                        <CheckBox x:Name="chkLogo4" Grid.Row="4" Grid.Column="2" Content="Seçme" IsChecked="True" VerticalAlignment="Center" Margin="0,0,0,6" Checked="LogoCheckBox_OnCheckedChanged" Unchecked="LogoCheckBox_OnCheckedChanged" />
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" Text="LOGO LINE 6 :" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="txtLogo5" Grid.Row="5" Grid.Column="1" Margin="0,0,8,6" MaxLength="48" TextChanged="LogoTextBox_OnTextChanged" />
+                        <CheckBox x:Name="chkLogo5" Grid.Row="5" Grid.Column="2" Content="Seçme" IsChecked="True" VerticalAlignment="Center" Margin="0,0,0,6" Checked="LogoCheckBox_OnCheckedChanged" Unchecked="LogoCheckBox_OnCheckedChanged" />
+
+                        <TextBlock Grid.Row="6" Grid.Column="0" Text="LOGO LINE 7 :" VerticalAlignment="Center" />
+                        <TextBox x:Name="txtLogo6" Grid.Row="6" Grid.Column="1" Margin="0,0,8,0" MaxLength="48" TextChanged="LogoTextBox_OnTextChanged" />
+                        <CheckBox x:Name="chkLogo6" Grid.Row="6" Grid.Column="2" Content="Seçme" IsChecked="True" VerticalAlignment="Center" Checked="LogoCheckBox_OnCheckedChanged" Unchecked="LogoCheckBox_OnCheckedChanged" />
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnGetLogo" Grid.Column="1" Content="GET LOGO" Margin="2" Click="BtnGetLogo_OnClick" />
+                        <Button x:Name="btnSaveLogo" Grid.Column="3" Content="SAVE LOGO" Margin="2" Click="BtnSaveLogo_OnClick" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tabSRVVAT" Header="VAT">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblVAT" FontWeight="SemiBold" Margin="0,0,0,8" Text="DEFINE VAT RATE" />
+
+                    <DataGrid x:Name="dgvVatDefine"
+                              Grid.Row="1"
+                              Margin="0,0,0,8"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column"
+                              SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="VAT ID" Binding="{Binding VatId}" Width="120" />
+                            <DataGridTextColumn Header="VAT RATE" Binding="{Binding VatRate}" Width="*" />
+                            <DataGridCheckBoxColumn Header="COMMIT" Binding="{Binding Commit}" Width="90" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnGetVat" Grid.Column="1" Content="GET VAT" Margin="2" Click="BtnGetVat_OnClick" />
+                        <Button x:Name="btnSaveVat" Grid.Column="3" Content="SAVE VAT" Margin="2" Click="BtnSaveVat_OnClick" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tabPageEndOfReceiptNote" Header="END OF RECEIPT NOTE">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Margin="0,0,0,8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="labelEORLine1" Grid.Row="0" Grid.Column="0" Text="LINE 1:" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="textBoxEORLine1" Grid.Row="0" Grid.Column="1" Margin="0,0,8,6" />
+                        <CheckBox x:Name="checkBoxEORLine1" Grid.Row="0" Grid.Column="2" Content="SAVE" VerticalAlignment="Center" Margin="0,0,0,6" />
+
+                        <TextBlock x:Name="labelEORLine2" Grid.Row="1" Grid.Column="0" Text="LINE 2:" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="textBoxEORLine2" Grid.Row="1" Grid.Column="1" Margin="0,0,8,6" />
+                        <CheckBox x:Name="checkBoxEORLine2" Grid.Row="1" Grid.Column="2" Content="SAVE" VerticalAlignment="Center" Margin="0,0,0,6" />
+
+                        <TextBlock x:Name="labelEORLine3" Grid.Row="2" Grid.Column="0" Text="LINE 3:" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="textBoxEORLine3" Grid.Row="2" Grid.Column="1" Margin="0,0,8,6" />
+                        <CheckBox x:Name="checkBoxEORLine3" Grid.Row="2" Grid.Column="2" Content="SAVE" VerticalAlignment="Center" Margin="0,0,0,6" />
+
+                        <TextBlock x:Name="labelEORLine4" Grid.Row="3" Grid.Column="0" Text="LINE 4:" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="textBoxEORLine4" Grid.Row="3" Grid.Column="1" Margin="0,0,8,6" />
+                        <CheckBox x:Name="checkBoxEORLine4" Grid.Row="3" Grid.Column="2" Content="SAVE" VerticalAlignment="Center" Margin="0,0,0,6" />
+
+                        <TextBlock x:Name="labelEORLine5" Grid.Row="4" Grid.Column="0" Text="LINE 5:" VerticalAlignment="Center" Margin="0,0,8,6" />
+                        <TextBox x:Name="textBoxEORLine5" Grid.Row="4" Grid.Column="1" Margin="0,0,8,6" />
+                        <CheckBox x:Name="checkBoxEORLine5" Grid.Row="4" Grid.Column="2" Content="SAVE" VerticalAlignment="Center" Margin="0,0,0,6" />
+
+                        <TextBlock x:Name="labelEORLine6" Grid.Row="5" Grid.Column="0" Text="LINE 6:" VerticalAlignment="Center" />
+                        <TextBox x:Name="textBoxEORLine6" Grid.Row="5" Grid.Column="1" Margin="0,0,8,0" />
+                        <CheckBox x:Name="checkBoxEORLine6" Grid.Row="5" Grid.Column="2" Content="SAVE" VerticalAlignment="Center" />
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="buttonEORGet" Grid.Column="1" Content="GET" Margin="2" Click="BtnEorGet_OnClick" />
+                        <Button x:Name="buttonEORSet" Grid.Column="3" Content="SET" Margin="2" Click="BtnEorSet_OnClick" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tabPageSendProduct" Header="SEND PRODUCT">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="lblProductFile" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0" Text="PRODUCT FILE" />
+                        <TextBox x:Name="textBoxProductFilePath" Grid.Column="1" Margin="0,0,8,0" />
+                        <Button x:Name="btnBrowseProductFile" Grid.Column="2" MinWidth="120" Content="BROWSE" Click="BtnBrowseProductFile_OnClick" />
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="labelTotalLine" Grid.Column="0" FontWeight="Bold" Margin="0,0,8,0" Text="TOTAL LINE :" />
+                        <TextBlock x:Name="labelTotalLineValue" Grid.Column="1" VerticalAlignment="Center" />
+                    </Grid>
+
+                    <Grid Grid.Row="2" Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnSendProducts" Grid.Column="1" MinWidth="100" Height="35" Content="SEND" Click="BtnSendProducts_OnClick" />
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="60*" />
+                            <RowDefinition Height="20*" />
+                        </Grid.RowDefinitions>
+
+                        <ProgressBar x:Name="progressBarSendProd" Grid.Row="1" Grid.Column="1" Height="24" />
+                        <TextBlock x:Name="labelElapsedTime" Grid.Row="1" Grid.Column="2" Margin="8,0,0,0" VerticalAlignment="Center" />
+                        <TextBlock x:Name="labelUnderProgressBar" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <TextBlock x:Name="txtStatus"
+                   Grid.Row="1"
+                   Margin="0,8,0,0"
+                   TextWrapping="Wrap"
+                   FontSize="13"
+                   Foreground="#444" />
+    </Grid>
+</UserControl>
