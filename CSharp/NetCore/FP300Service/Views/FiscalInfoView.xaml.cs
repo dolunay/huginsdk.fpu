@@ -1,11 +1,8 @@
-using System;
 using System.Globalization;
 using System.IO;
-using System.Threading;
 using System.Windows.Controls;
-using FP300Service;
 
-namespace FP300NetCoreService.Views;
+namespace FP300Service.Views;
 
 internal enum FiscalCmd
 {

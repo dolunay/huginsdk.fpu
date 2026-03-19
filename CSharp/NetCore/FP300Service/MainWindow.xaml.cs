@@ -1,21 +1,17 @@
-﻿using System.Net;
-using System.Net.Sockets;
-using System.Security.Cryptography;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.IO;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Interop;
-using System.Windows.Media.Imaging;
-using System.Xml.Linq;
+﻿using FP300Service.Views;
 using Hugin.Common;
 using Hugin.POS.CompactPrinter.FP300;
-using FP300Service;
-using FP300NetCoreService.Views;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Xml.Linq;
 
-namespace FP300NetCoreService;
+namespace FP300Service;
 
 public partial class MainWindow : Window, IBridge
 {

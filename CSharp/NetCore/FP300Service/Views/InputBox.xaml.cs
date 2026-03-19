@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace FP300NetCoreService.Views;
+namespace FP300Service.Views;
 
 public partial class InputBox : Window
 {

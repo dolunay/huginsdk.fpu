@@ -1,11 +1,10 @@
-using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace FP300NetCoreService.Controls;
+namespace FP300Service.Controls;
 
 public partial class NumericUpDownControl : UserControl
 {

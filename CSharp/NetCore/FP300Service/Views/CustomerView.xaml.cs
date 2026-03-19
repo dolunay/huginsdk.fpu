@@ -1,9 +1,7 @@
-using System.Collections.Generic;
-using System.Windows;
 using Hugin.Common;
-using FP300Service;
+using System.Windows;
 
-namespace FP300NetCoreService.Views;
+namespace FP300Service.Views;
 
 public partial class CustomerView : Window
 {

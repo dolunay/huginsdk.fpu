@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Input;
-using FP300Service;
 
-namespace FP300NetCoreService.Views;
+namespace FP300Service.Views;
 
 public partial class ServiceView : UserControl
 {

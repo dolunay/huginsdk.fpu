@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-
-namespace FP300Service
+﻿namespace FP300Service
 {
     public static class Common
     {

@@ -1,12 +1,9 @@
-using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
-namespace FP300NetCoreService.Views;
+namespace FP300Service.Views;
 
 public partial class TestServer : Window, IDisposable
 {

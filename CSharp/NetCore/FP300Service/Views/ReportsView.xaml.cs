@@ -1,10 +1,8 @@
-using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using FP300Service;
 
-namespace FP300NetCoreService.Views;
+namespace FP300Service.Views;
 
 public partial class ReportsView : UserControl
 {

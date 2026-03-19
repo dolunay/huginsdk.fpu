@@ -1,6 +1,6 @@
 using System.Windows.Controls;
 
-namespace FP300NetCoreService.Views;
+namespace FP300Service.Views;
 
 public partial class MainSectionView : UserControl
 {

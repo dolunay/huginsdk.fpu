@@ -1,4 +1,3 @@
-using FP300Service;
 using Hugin.POS.CompactPrinter.FP300;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
@@ -8,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
-namespace FP300NetCoreService.Views;
+namespace FP300Service.Views;
 
 public partial class ProgramView : UserControl
 {

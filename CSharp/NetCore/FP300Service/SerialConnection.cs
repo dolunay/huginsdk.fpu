@@ -1,11 +1,4 @@
-﻿using FP300Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FP300Service
+﻿namespace FP300Service
 {
 #if ON_RDP
     public class SerialConnection : IConnection, IDisposable

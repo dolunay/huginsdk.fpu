@@ -1,7 +1,7 @@
-﻿<Application x:Class="FP300NetCoreService.App"
+﻿<Application x:Class="FP300Service.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:FP300NetCoreService"
+             xmlns:local="clr-namespace:FP300Service"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

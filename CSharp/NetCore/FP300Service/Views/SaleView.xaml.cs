@@ -1,19 +1,16 @@
-using System;
+using Hugin.Common;
+using Microsoft.Win32;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
-using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using Hugin.Common;
-using FP300Service;
+using System.Xml.Linq;
 
-namespace FP300NetCoreService.Views;
+namespace FP300Service.Views;
 
 internal enum AdjustmentType : sbyte
 {
